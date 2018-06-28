@@ -1,0 +1,32 @@
+{
+  "name": "skema-mysql",
+  "version": "1.0.0",
+  "description": "skema-mysql",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "piapia test/*.js --coverage",
+    "posttest": "piapia --coverage-report=html && codecov"
+  },
+  "files": [
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kaelzhang/skema-mysql.git"
+  },
+  "keywords": [
+    "skema-mysql"
+  ],
+  "engines": {
+    "node": ">= 6"
+  },
+  "author": "kaelzhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaelzhang/skema-mysql/issues"
+  },
+  "devDependencies": {
+    "piapia": "^1.0.0",
+    "codecov": "^2.3.0"
+  }
+}
