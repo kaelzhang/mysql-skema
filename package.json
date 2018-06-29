@@ -1,5 +1,5 @@
 {
-  "name": "mysql-skema",
+  "name": "skema.duplex",
   "version": "1.0.0",
   "description": "Duplex skema for mysql",
   "main": "src/index.js",
@@ -13,10 +13,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/kaelzhang/mysql-skema.git"
+    "url": "git://github.com/kaelzhang/skema.duplex.git"
   },
   "keywords": [
-    "mysql-skema",
+    "skema.duplex",
     "mysql",
     "scheme",
     "skema"
@@ -30,7 +30,7 @@
   "author": "kaelzhang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaelzhang/mysql-skema/issues"
+    "url": "https://github.com/kaelzhang/skema.duplex/issues"
   },
   "devDependencies": {
     "codecov": "^3.0.2",
