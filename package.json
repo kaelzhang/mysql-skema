@@ -1,10 +1,11 @@
 {
-  "name": "skema-mysql",
+  "name": "mysql-skema",
   "version": "1.0.0",
-  "description": "skema-mysql",
+  "description": "Duplex skema for mysql",
   "main": "src/index.js",
   "scripts": {
     "test": "piapia test/*.js --coverage",
+    "test-no-cov": "piapia test/*.js",
     "posttest": "piapia --coverage-report=html && codecov"
   },
   "files": [
@@ -15,8 +16,14 @@
     "url": "git://github.com/kaelzhang/skema-mysql.git"
   },
   "keywords": [
-    "skema-mysql"
+    "skema-mysql",
+    "mysql",
+    "scheme",
+    "skema"
   ],
+  "ava": {
+    "babel": false
+  },
   "engines": {
     "node": ">= 6"
   },
@@ -28,5 +35,13 @@
   "devDependencies": {
     "piapia": "^1.0.0",
     "codecov": "^2.3.0"
+  },
+  "dependencies": {
+    "core-util-is": "^1.0.2",
+    "err-object": "^3.0.3",
+    "lodash.foreach": "^4.5.0",
+    "make-array": "^1.0.3",
+    "moment": "^2.22.2",
+    "skema": "^9.3.3"
   }
 }
