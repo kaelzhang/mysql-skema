@@ -152,3 +152,86 @@ test('nested model', async t => {
     b: 1
   }, 'enumerable')
 })
+
+test('invalid type', async t => {
+  t.throws(() => {
+    mysql('any', {
+      a: 1
+    })
+  }, 'invalid type 1')
+})
+
+test('optional', async t => {
+  const A = mysql('A', {
+    a: [String, Number]
+  })
+
+  const B = mysql('B', {
+    a: A.optional(),
+    b: Number,
+    c: A
+  })
+
+  t.throws(() => {
+    B.from({
+      b: 1
+    })
+  })
+
+  const record = {
+    b: 1,
+    c: {
+      a: 1
+    }
+  }
+
+  const b = B.from(record)
+  t.is(b.a, undefined)
+  t.is(b.c.a, '1')
+})
+
+test('arrayOf', async t => {
+  const A = mysql('A', {
+    a: [String, Number]
+  })
+
+  const AA = A.arrayOf()
+
+  const records = [{
+    a: 1
+  }, {
+    a: 2
+  }]
+
+  deepEqual(t, AA.from(records), [{
+    a: '1'
+  }, {
+    a: '2'
+  }])
+})
+
+test('built-in optional', async t => {
+  const A = mysql('A', {
+    a: 'sql-id?'
+  })
+
+  const a = A.from({})
+  t.is(a.a, undefined)
+  a.a = 1
+
+  t.is(a.a, '1')
+})
+
+test('duplicate map key', async t => {
+  t.throws(() => {
+    mysql('A', {
+      a: Number,
+      b: String
+    }, {
+      keyMap: {
+        a: 'a',
+        b: 'a'
+      }
+    })
+  }, `duplicate map key 'a'`)
+})

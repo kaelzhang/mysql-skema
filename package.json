@@ -33,17 +33,17 @@
     "url": "https://github.com/kaelzhang/mysql-skema/issues"
   },
   "devDependencies": {
-    "codecov": "^2.3.0",
+    "codecov": "^3.0.2",
     "lodash.camelcase": "^4.3.0",
     "lodash.snakecase": "^4.1.1",
     "piapia": "^1.0.0"
   },
   "dependencies": {
     "core-util-is": "^1.0.2",
-    "err-object": "^3.0.3",
+    "err-object": "^3.0.4",
     "lodash.foreach": "^4.5.0",
     "make-array": "^1.0.3",
     "moment": "^2.22.2",
-    "skema": "^9.3.3"
+    "skema": "^9.3.4"
   }
 }

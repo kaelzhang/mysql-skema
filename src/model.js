@@ -293,9 +293,9 @@ function reverseMap (map) {
 function model (name, rules, options) {
   const host = {
     [name]: class extends TypeModel {
-      static get [Symbol.species] () {
-        return Model
-      }
+      // static get [Symbol.species] () {
+      //   return Model
+      // }
 
       constructor () {
         super(rules, options)
