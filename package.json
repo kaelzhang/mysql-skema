@@ -13,10 +13,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/kaelzhang/skema-mysql.git"
+    "url": "git://github.com/kaelzhang/mysql-skema.git"
   },
   "keywords": [
-    "skema-mysql",
+    "mysql-skema",
     "mysql",
     "scheme",
     "skema"
@@ -30,11 +30,13 @@
   "author": "kaelzhang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaelzhang/skema-mysql/issues"
+    "url": "https://github.com/kaelzhang/mysql-skema/issues"
   },
   "devDependencies": {
-    "piapia": "^1.0.0",
-    "codecov": "^2.3.0"
+    "codecov": "^2.3.0",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.snakecase": "^4.1.1",
+    "piapia": "^1.0.0"
   },
   "dependencies": {
     "core-util-is": "^1.0.2",

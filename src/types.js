@@ -1,5 +1,5 @@
 const {D} = require('./model')
-const {any} = require('skema')
+const {any, type} = require('skema')
 const make_array = require('make-array')
 const {isArray} = require('core-util-is')
 const {error} = require('./error')
@@ -14,7 +14,7 @@ function isNumeric (string) {
 D('sql-id', {
   set (value) {
     if (!isNumeric(value)) {
-      throw error('SCHEMA_NOT_ID')
+      throw error('INVALID_ID')
     }
 
     return String(value)
@@ -61,7 +61,7 @@ D('sql-timestamp', {
   set (value) {
     const timestamp = Date.parse(value)
     if (Number.isNaN(timestamp)) {
-      throw new TypeError('invalid timestamp')
+      throw error('INVALID_TIMESTAMP')
     }
 
     return timestamp
@@ -69,5 +69,25 @@ D('sql-timestamp', {
 }, {
   set (value) {
     return new Date(value)
+  }
+})
+
+const ON_ERROR = (v, array) => {
+  const quotedArray = array.map(v => `'${v}'`)
+  const last = quotedArray.pop()
+  const enumString = quotedArray.length
+    ? `${quotedArray.join(', ')} or ${last}`
+    : last
+
+  throw error('ENUM_CONFLICT', v, enumString)
+}
+
+exports.enum = (array, onerror = ON_ERROR) => type({
+  validate (v) {
+    if (~array.indexOf(v)) {
+      return true
+    }
+
+    onerror(v, array)
   }
 })

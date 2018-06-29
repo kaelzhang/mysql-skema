@@ -3,4 +3,4 @@ const {E, error} = new Errors()
 
 exports.error = error
 
-// E()
+E()

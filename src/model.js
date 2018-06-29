@@ -5,9 +5,9 @@ const {isArray, isString} = require('core-util-is')
 const TYPES = {}
 
 function D (name, toData, toDB) {
-  if (name in TYPES) {
-    throw new Error(`'${name}' should not be defined again`)
-  }
+  // if (name in TYPES) {
+  //   throw new Error(`'${name}' should not be defined again`)
+  // }
 
   toData = type(toData)
   toDB = toDB
@@ -74,7 +74,8 @@ class Shape {
   }
 
   _convertArrayType (array) {
-    return type(array[this._typeIndex] || array[0])
+    return this._convertType(
+      array[this._typeIndex] || array[0])
   }
 
   _convertNonArrayType (alias) {
@@ -213,7 +214,7 @@ const JUST_RETURN = x => x
 
 class TypeModel extends Model {
   _createSkema (s, {
-    keyMap,
+    keyMap = {},
     keyMappers: [
       // _id -> id
       keyMapper = JUST_RETURN,
