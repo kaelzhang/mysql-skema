@@ -38,11 +38,18 @@ class Shape {
     this._shapeKeyMapper = shapeKeyMapper
     this._keyMapper = keyMapper
     this._typeIndex = typeIndex
+    this._keys = null
+    this._skema = null
+
     this._convertShape(shape)
   }
 
   get skema () {
     return this._skema
+  }
+
+  get keys () {
+    return this._keys
   }
 
   _convertShape (s) {
@@ -62,6 +69,7 @@ class Shape {
       }
     })
 
+    this._keys = keys
     this._skema = shape(converted, true)
   }
 
@@ -247,7 +255,18 @@ class TypeModel extends Model {
       typeIndex: 1
     })
 
+    this._shape = shape
+    this._shapeR = shapeReversed
+
     return [shape.skema, shapeReversed.skema]
+  }
+
+  get keys () {
+    return this._shape.keys
+  }
+
+  get keysR () {
+    return this._shapeR.keys
   }
 
   _mapKey (key) {
@@ -308,3 +327,4 @@ function model (name, rules, options) {
 
 // factory
 exports.model = model
+model.defineType = D

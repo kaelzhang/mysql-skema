@@ -188,6 +188,8 @@ test('optional', async t => {
   const b = B.from(record)
   t.is(b.a, undefined)
   t.is(b.c.a, '1')
+
+  t.deepEqual(B.keys, ['a', 'b', 'c'])
 })
 
 test('arrayOf', async t => {

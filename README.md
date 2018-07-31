@@ -15,18 +15,39 @@
 
 # skema.duplex
 
-<!-- description -->
+Duplex skema
 
 ## Install
 
 ```sh
-$ npm install skema.duplex
+$ npm i skema.duplex
 ```
 
 ## Usage
 
 ```js
-import mysql from 'skema.duplex'
+import duplex from 'skema.duplex'
+
+const Member = duplex('Member', {
+  id: [Number, String],
+  name: String
+})
+
+Member.keys   // ['id', 'name']
+
+Member.from({
+  id: '123',
+  name: 'kael'
+})
+// - id: 123
+// - name: 'kael'
+
+Member.fromR({
+  id: 123,
+  name: 'kael'
+})
+// -id: '123'
+// -name: 'kael'
 ```
 
 ## License
